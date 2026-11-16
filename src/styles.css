@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: #090d16;
+    color: #e5e7eb;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+.flip-scene {
+  perspective: 1000px;
+}
+.flip-card {
+  transform-style: preserve-3d;
+  transition: transform 0.55s ease;
+}
+.flip-card.is-flipped {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #certificate,
+  #certificate * {
+    visibility: visible;
+  }
+  #certificate {
+    position: absolute;
+    inset: 0;
+    background: white !important;
+    color: #111 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
